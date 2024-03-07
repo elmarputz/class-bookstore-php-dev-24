@@ -1,0 +1,139 @@
+#ddev-generated
+
+http:
+  routers:
+    
+    
+    bookshop-phpmyadmin-80-http:
+      
+      rule: HostRegexp(`bookshop.ddev.site`)
+      
+      middlewares:
+        - autodetect
+      service: "bookshop-phpmyadmin-80-http"
+      tls: false
+      entrypoints:
+        - http-8036
+    
+    
+    
+    bookshop-web-80-http:
+      
+      rule: HostRegexp(`bookshop.ddev.site`)
+      
+      middlewares:
+        - autodetect
+      service: "bookshop-web-80-http"
+      tls: false
+      entrypoints:
+        - http-80
+    
+    
+    bookshop-web-8025-http:
+      
+      rule: HostRegexp(`bookshop.ddev.site`)
+      
+      middlewares:
+        - autodetect
+      service: "bookshop-web-8025-http"
+      tls: false
+      entrypoints:
+        - http-8025
+    
+    
+    
+    
+    
+    bookshop-phpmyadmin-80-https:
+      
+      rule: HostRegexp(`bookshop.ddev.site`)
+      
+      middlewares:
+        - autodetect
+      service: "bookshop-phpmyadmin-80-https"
+      
+      tls: true
+      
+      entrypoints:
+        - http-8037
+    
+    
+    
+    
+    bookshop-web-80-https:
+      
+      rule: HostRegexp(`bookshop.ddev.site`)
+      
+      middlewares:
+        - autodetect
+      service: "bookshop-web-80-https"
+      
+      tls: true
+      
+      entrypoints:
+        - http-443
+    
+    
+    bookshop-web-8025-https:
+      
+      rule: HostRegexp(`bookshop.ddev.site`)
+      
+      middlewares:
+        - autodetect
+      service: "bookshop-web-8025-https"
+      
+      tls: true
+      
+      entrypoints:
+        - http-8026
+    
+    
+
+  # autodetect won't be needed in Traefik 3 https://github.com/traefik/traefik/pull/9546
+  middlewares:
+    autodetect:
+      contentType:
+        autoDetect: false
+
+  services:
+    
+    bookshop-phpmyadmin-80-http:
+      loadbalancer:
+        servers:
+          - url: http://ddev-bookshop-phpmyadmin:80
+    
+    bookshop-phpmyadmin-80-https:
+    
+      loadbalancer:
+        servers:
+          - url: http://ddev-bookshop-phpmyadmin:80
+    
+    bookshop-web-80-http:
+      loadbalancer:
+        servers:
+          - url: http://ddev-bookshop-web:80
+    
+    bookshop-web-8025-http:
+      loadbalancer:
+        servers:
+          - url: http://ddev-bookshop-web:8025
+    
+    bookshop-web-80-https:
+    
+      loadbalancer:
+        servers:
+          - url: http://ddev-bookshop-web:80
+    
+    bookshop-web-8025-https:
+    
+      loadbalancer:
+        servers:
+          - url: http://ddev-bookshop-web:8025
+    
+
+
+tls:
+  certificates:
+    - certFile: /mnt/ddev-global-cache/traefik/certs/bookshop.crt
+      keyFile: /mnt/ddev-global-cache/traefik/certs/bookshop.key
+
