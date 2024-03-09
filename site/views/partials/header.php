@@ -33,7 +33,7 @@
             </ul>
     
             <?php /* info - add when starting with search implementation */
-             //require('views/partials/searchform.php'); ?>
+             require('views/partials/searchform.php'); ?>
 
             <ul class="nav navbar-nav navbar-right login">
                 <li  class="nav-item"> 
