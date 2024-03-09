@@ -15,3 +15,14 @@ spl_autoload_register(function ($class) {
 
 });
 
+/* DataManager DI */
+$mode = 'mock';
+switch ($mode) {
+    case 'mock' : 
+        $class = 'mock';
+        break; 
+    case 'pdo' : 
+        $class = 'mysqlpdo'; 
+        break; 
+}
+require_once(__DIR__ . '/../lib/Data/DataManager_' . $class . '.php'); 
