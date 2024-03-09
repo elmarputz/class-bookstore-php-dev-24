@@ -46,8 +46,18 @@ class DataManager {
     }
 
 
-    public static function test() : string {
-        return "datamanager works!";
+    public static function getCategories() : array {
+        return self::getMockData('categories');
+    }
+
+    public static function getBooksByCategory(int $categoryId) : array {
+        $res = [];
+        foreach (self::getMockData('books') as $book) {
+            if ($book->getCategoryId() == $categoryId) {
+                $res[] = $book;
+            }
+        }
+        return $res;
     }
 
 
