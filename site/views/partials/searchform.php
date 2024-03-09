@@ -6,4 +6,4 @@
         id="title" name="title" placeholder="Search book by title..." value="" />
     <button class="btn btn-outline-success btn-sm" type="submit">Search</button>
 
-</form>
+</form> 
